@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hackdown</title>
+    <link rel="icon" type="image/svg+xml" href="https://simpleicons.org/icons/markdown.svg" />
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/codemirror@5.65.18/lib/codemirror.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.11.1/styles/github.min.css" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div>
+          <div class="brandline">
+            <span class="brand-badge">H</span>
+            <span class="brand-text">Hackdown</span>
+          </div>
+          <h1>Markdown → 微信公众号排版</h1>
+          <p>实时预览、主题样式、复制公众号可粘贴 HTML</p>
+        </div>
+        <div class="toolbar">
+          <label class="theme-picker">
+            <span>主题</span>
+            <select id="themeSelect">
+              <option value="classic">经典灰</option>
+              <option value="ink">墨蓝</option>
+              <option value="sunset">暖橙</option>
+              <option value="forest">森绿</option>
+              <option value="plum">李紫</option>
+              <option value="ocean">海蓝</option>
+              <option value="rose">玫瑰</option>
+              <option value="amber">琥珀</option>
+              <option value="slate">板岩</option>
+              <option value="mint">薄荷</option>
+              <option value="cocoa">可可</option>
+              <option value="indigo">靛青</option>
+            </select>
+          </label>
+          <button id="copyHtmlBtn" class="btn primary">复制 HTML</button>
+          <button id="copyRichBtn" class="btn">复制富文本</button>
+          <button id="downloadBtn" class="btn">下载 HTML</button>
+        </div>
+      </header>
+
+      <main class="workspace">
+        <section class="panel editor-panel">
+          <div class="panel-head">
+            <h2>Markdown</h2>
+            <div class="mini-actions">
+              <label class="btn file-btn">
+                导入 .md
+                <input id="fileInput" type="file" accept=".md,text/markdown,text/plain" />
+              </label>
+              <button id="sampleBtn" class="btn">示例内容</button>
+              <button id="clearBtn" class="btn">清空</button>
+            </div>
+          </div>
+          <textarea id="markdownInput" spellcheck="false"></textarea>
+        </section>
+
+        <section class="panel preview-panel">
+          <div class="panel-head">
+            <h2>公众号预览</h2>
+            <span id="statusText" class="status">准备就绪</span>
+          </div>
+          <article id="preview" class="wechat-body theme-classic"></article>
+        </section>
+      </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dompurify@3.2.6/dist/purify.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.18/lib/codemirror.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.18/mode/markdown/markdown.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/highlight.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/languages/javascript.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/languages/bash.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/languages/powershell.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/languages/json.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/languages/python.min.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>

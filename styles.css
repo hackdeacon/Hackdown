@@ -1,0 +1,413 @@
+:root {
+  --bg: #e6eef9;
+  --surface: #ffffff;
+  --line: #c6d1e1;
+  --text: #0b1527;
+  --muted: #33455f;
+  --brand: #0f4ea8;
+  --brand-strong: #0c3f89;
+  --brand-soft: #eaf2ff;
+  --radius: 8px;
+  --system-sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --system-mono: ui-monospace, "SF Mono", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--system-sans);
+  color: var(--text);
+  background: var(--bg);
+}
+
+.app-shell {
+  width: min(1400px, 96vw);
+  margin: 18px auto;
+}
+
+.topbar {
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+  align-items: flex-end;
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: 16px 18px;
+}
+
+.brandline {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.brand-badge {
+  display: inline-grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 7px;
+  background: var(--brand);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+.brand-text {
+  font-size: 13px;
+  font-weight: 650;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #2a2a2a;
+}
+
+.topbar h1 {
+  margin: 0;
+  font-size: 26px;
+  letter-spacing: 0.01em;
+}
+
+.topbar p {
+  margin: 6px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.theme-picker {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: #26364f;
+}
+
+select,
+.btn {
+  border-radius: 999px;
+  border: none;
+  background: #cfdcf0;
+  color: var(--text);
+  padding: 9px 14px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.btn {
+  cursor: pointer;
+}
+
+.btn.primary {
+  background: var(--brand);
+  color: #fff;
+}
+
+.btn:hover,
+select:hover {
+  background: #becfe9;
+}
+
+.btn.primary:hover {
+  background: var(--brand-strong);
+}
+
+.btn:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid #9ec1ff;
+  outline-offset: 1px;
+}
+
+.workspace {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.panel {
+  background: var(--surface);
+  border-radius: var(--radius);
+  min-height: 76vh;
+  overflow: hidden;
+}
+
+.editor-panel {
+  display: flex;
+  flex-direction: column;
+}
+
+.panel-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  background: #dce7f6;
+  padding: 12px 14px;
+}
+
+.panel-head h2 {
+  margin: 0;
+  font-size: 16px;
+  color: #1b2940;
+}
+
+.mini-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.file-btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.file-btn input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+textarea {
+  width: 100%;
+  flex: 1;
+  height: auto;
+  min-height: 0;
+  resize: none;
+  border: 0;
+  outline: none;
+  padding: 16px;
+  font: 14px/1.7 var(--system-mono);
+  color: #0f1a2d;
+  background: #f8fbff;
+  overflow: auto;
+}
+
+.editor-panel .CodeMirror {
+  flex: 1;
+  height: auto;
+  font: 14px/1.7 var(--system-mono);
+  color: #0f1a2d;
+  background: #f8fbff;
+}
+
+.editor-panel .CodeMirror-gutters {
+  background: #eef3fa;
+  border-right: none;
+}
+
+.editor-panel .CodeMirror-linenumber {
+  color: #4f6281;
+}
+
+.status {
+  font-size: 12px;
+  color: #31425e;
+  font-weight: 500;
+}
+
+.preview-panel {
+  display: flex;
+  flex-direction: column;
+}
+
+.wechat-body {
+  margin: 0 auto;
+  width: min(92%, 760px);
+  padding: 22px 0 34px;
+}
+
+.wechat-body * {
+  max-width: 100%;
+}
+
+.wechat-body p,
+.wechat-body li {
+  line-height: 1.9;
+  font-size: 16px;
+  letter-spacing: 0.015em;
+}
+
+.wechat-body h1,
+.wechat-body h2,
+.wechat-body h3,
+.wechat-body h4 {
+  margin: 28px 0 14px;
+  line-height: 1.5;
+}
+
+.wechat-body h1 {
+  font-size: 28px;
+  text-align: center;
+}
+
+.wechat-body h2 {
+  font-size: 24px;
+}
+
+.wechat-body h3 {
+  font-size: 20px;
+}
+
+.wechat-body blockquote {
+  margin: 14px 0;
+  padding: 10px 14px;
+  border-left: 4px solid var(--wx-accent);
+  background: var(--wx-soft);
+  border-radius: 6px;
+}
+
+.wechat-body pre {
+  border-radius: 8px;
+  padding: 14px;
+  overflow: auto;
+  background: #f5f7fb;
+  border: 1px solid #d9e1ee;
+}
+
+.wechat-body code {
+  font-family: var(--system-mono);
+  font-size: 14px;
+}
+
+.wechat-body :not(pre) > code {
+  padding: 0.1em 0.35em;
+  border-radius: 4px;
+  background: var(--wx-soft);
+}
+
+.wechat-body pre code.hljs,
+.wechat-body .hljs {
+  font-family: var(--system-mono) !important;
+  background: transparent !important;
+}
+
+.wechat-body table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 14px 0;
+  display: block;
+  overflow: auto;
+}
+
+.wechat-body th,
+.wechat-body td {
+  border: 1px solid #d7dde8;
+  padding: 8px 10px;
+  text-align: left;
+}
+
+.wechat-body img {
+  border-radius: 10px;
+}
+
+.theme-classic {
+  --wx-text: #283345;
+  --wx-accent: #2e5c9e;
+  --wx-soft: #edf4ff;
+}
+
+.theme-ink {
+  --wx-text: #19334f;
+  --wx-accent: #0f4e81;
+  --wx-soft: #e8f2fa;
+}
+
+.theme-sunset {
+  --wx-text: #503127;
+  --wx-accent: #d96c35;
+  --wx-soft: #fff2ea;
+}
+
+.theme-forest {
+  --wx-text: #244232;
+  --wx-accent: #317951;
+  --wx-soft: #ebf7f0;
+}
+
+.theme-plum {
+  --wx-text: #3a2642;
+  --wx-accent: #7a3fa0;
+  --wx-soft: #f7eefc;
+}
+
+.theme-ocean {
+  --wx-text: #16384f;
+  --wx-accent: #0b79b5;
+  --wx-soft: #e9f7ff;
+}
+
+.theme-rose {
+  --wx-text: #4a2a34;
+  --wx-accent: #c14f73;
+  --wx-soft: #feeff4;
+}
+
+.theme-amber {
+  --wx-text: #4b3518;
+  --wx-accent: #c98622;
+  --wx-soft: #fff6e8;
+}
+
+.theme-slate {
+  --wx-text: #2d3645;
+  --wx-accent: #586781;
+  --wx-soft: #edf1f7;
+}
+
+.theme-mint {
+  --wx-text: #1e3f35;
+  --wx-accent: #2f9b7e;
+  --wx-soft: #e8f8f3;
+}
+
+.theme-cocoa {
+  --wx-text: #3f2c25;
+  --wx-accent: #9a5f4b;
+  --wx-soft: #f7efe9;
+}
+
+.theme-indigo {
+  --wx-text: #272f57;
+  --wx-accent: #4e64d8;
+  --wx-soft: #edf0ff;
+}
+
+@media (max-width: 980px) {
+  .topbar {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .workspace {
+    grid-template-columns: 1fr;
+  }
+
+  .panel {
+    min-height: auto;
+  }
+
+}
+
+.wechat-body {
+  color: var(--wx-text);
+}
+
+.wechat-body a {
+  color: var(--wx-accent);
+}
