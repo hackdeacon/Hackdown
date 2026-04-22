@@ -31,80 +31,121 @@ body {
 
 .topbar {
   display: flex;
-  gap: 16px;
+  gap: 14px;
   justify-content: space-between;
-  align-items: flex-end;
+  align-items: center;
   background: var(--surface);
   border-radius: var(--radius);
-  padding: 16px 18px;
+  padding: 12px 16px;
+}
+
+.topbar-main {
+  min-width: 0;
 }
 
 .brandline {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  margin-bottom: 8px;
+  gap: 7px;
+  margin-bottom: 6px;
 }
 
 .brand-badge {
   display: inline-grid;
   place-items: center;
-  width: 24px;
-  height: 24px;
-  border-radius: 7px;
+  width: 20px;
+  height: 20px;
+  border-radius: 6px;
   background: var(--brand);
   color: #fff;
-  font-size: 14px;
-  font-weight: 700;
-  letter-spacing: 0.01em;
+  font-size: 12px;
+  font-weight: 600;
 }
 
 .brand-text {
-  font-size: 13px;
-  font-weight: 650;
-  letter-spacing: 0.04em;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: #2a2a2a;
+  color: #3c4c68;
 }
 
 .topbar h1 {
   margin: 0;
-  font-size: 26px;
-  letter-spacing: 0.01em;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: #121a2d;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .topbar p {
-  margin: 6px 0 0;
-  color: var(--muted);
-  font-size: 14px;
+  margin: 3px 0 0;
+  color: #5c6c87;
+  font-size: 12px;
   font-weight: 500;
+  line-height: 1.35;
 }
 
 .toolbar {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
   flex-wrap: wrap;
+  justify-content: flex-end;
 }
 
 .theme-picker {
   display: flex;
   align-items: center;
-  gap: 6px;
-  font-size: 13px;
-  color: #26364f;
+  gap: 5px;
+  font-size: 12px;
+  color: #51607a;
+  padding: 0;
+  overflow: hidden;
+}
+
+.theme-picker select {
+  border-radius: 999px;
+  border: none;
+  background: #b8cfe8;
+  color: var(--text);
+  padding: 8px 12px;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.2;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: none;
+  cursor: pointer;
 }
 
 select,
 .btn {
   border-radius: 999px;
   border: none;
-  background: #cfdcf0;
+  background: #b8cfe8;
   color: var(--text);
-  padding: 9px 14px;
-  font-size: 13px;
+  padding: 0 12px;
+  font-size: 12px;
   font-weight: 500;
+  line-height: 32px;
+  height: 32px;
+  vertical-align: middle;
 }
+
+select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: none;
+  padding-right: 12px;
+}
+
 
 .btn {
   cursor: pointer;
@@ -117,7 +158,7 @@ select,
 
 .btn:hover,
 select:hover {
-  background: #becfe9;
+  background: #a3bddb;
 }
 
 .btn.primary:hover {
@@ -127,8 +168,7 @@ select:hover {
 .btn:focus-visible,
 select:focus-visible,
 textarea:focus-visible {
-  outline: 2px solid #9ec1ff;
-  outline-offset: 1px;
+  outline: none;
 }
 
 .workspace {
@@ -157,6 +197,14 @@ textarea:focus-visible {
   gap: 10px;
   background: #dce7f6;
   padding: 12px 14px;
+  min-height: 52px;
+}
+
+.panel-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
 }
 
 .panel-head h2 {
@@ -202,23 +250,32 @@ textarea {
   flex: 1;
   height: auto;
   font: 14px/1.7 var(--system-mono);
-  color: #0f1a2d;
-  background: #f8fbff;
+  border-radius: 0 0 var(--radius) var(--radius);
 }
 
 .editor-panel .CodeMirror-gutters {
-  background: #eef3fa;
   border-right: none;
 }
 
+.editor-panel .CodeMirror {
+  background: #ffffff;
+  color: #1f2328;
+}
+
+.editor-panel .CodeMirror-gutters {
+  background: #f6f8fb;
+  color: #6e7781;
+  padding: 0 4px;
+}
+
 .editor-panel .CodeMirror-linenumber {
-  color: #4f6281;
+  color: #6e7781;
+  padding: 0 4px;
+  min-width: 0;
 }
 
 .status {
-  font-size: 12px;
-  color: #31425e;
-  font-weight: 500;
+  display: none;
 }
 
 .preview-panel {
@@ -241,6 +298,12 @@ textarea {
   line-height: 1.9;
   font-size: 16px;
   letter-spacing: 0.015em;
+}
+
+.wechat-body ul,
+.wechat-body ol {
+  margin: 14px 0;
+  padding: 0 0 0 2.2em;
 }
 
 .wechat-body h1,
@@ -267,15 +330,19 @@ textarea {
 .wechat-body blockquote {
   margin: 14px 0;
   padding: 10px 14px;
-  border-left: 4px solid var(--wx-accent);
   background: var(--wx-soft);
   border-radius: 6px;
+}
+
+.wechat-body blockquote p {
+  margin: 0 !important;
+  padding: 4px 0;
 }
 
 .wechat-body pre {
   border-radius: 8px;
   padding: 14px;
-  overflow: auto;
+  overflow-x: auto;
   background: #f5f7fb;
   border: 1px solid #d9e1ee;
 }
@@ -283,18 +350,25 @@ textarea {
 .wechat-body code {
   font-family: var(--system-mono);
   font-size: 14px;
+  white-space: pre;
+  text-align: left;
+  word-break: keep-all;
+  overflow-wrap: normal;
 }
 
 .wechat-body :not(pre) > code {
   padding: 0.1em 0.35em;
   border-radius: 4px;
   background: var(--wx-soft);
+  display: inline;
+  white-space: nowrap;
 }
 
 .wechat-body pre code.hljs,
 .wechat-body .hljs {
   font-family: var(--system-mono) !important;
   background: transparent !important;
+  color: #24292f !important;
 }
 
 .wechat-body table {
@@ -314,6 +388,13 @@ textarea {
 
 .wechat-body img {
   border-radius: 10px;
+}
+
+.wechat-body hr {
+  border: none;
+  height: 1px;
+  background: #e2e8f0;
+  margin: 24px 0;
 }
 
 .theme-classic {
@@ -392,6 +473,15 @@ textarea {
   .topbar {
     align-items: flex-start;
     flex-direction: column;
+    padding: 12px;
+  }
+
+  .topbar-main {
+    width: 100%;
+  }
+
+  .topbar h1 {
+    white-space: normal;
   }
 
   .workspace {

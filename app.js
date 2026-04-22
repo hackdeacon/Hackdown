@@ -115,7 +115,7 @@ function parseMarkdown(mdText) {
   return DOMPurify.sanitize(rawHtml, {
     ALLOWED_ATTR: ["href", "src", "alt", "title", "class"],
     ALLOWED_TAGS: [
-      "a", "p", "h1", "h2", "h3", "h4", "h5", "h6", "blockquote", "pre", "code", "em", "strong", "ul", "ol", "li", "img", "table", "thead", "tbody", "tr", "th", "td", "hr"
+      "a", "p", "h1", "h2", "h3", "h4", "h5", "h6", "blockquote", "pre", "code", "em", "strong", "ul", "ol", "li", "img", "table", "thead", "tbody", "tr", "th", "td", "hr", "br"
     ]
   });
 }
@@ -125,7 +125,8 @@ function setupMarkdownEditor() {
     return;
   }
   markdownEditor = window.CodeMirror.fromTextArea(el.input, {
-    mode: "markdown",
+    mode: "gfm",
+    theme: "default",
     lineNumbers: true,
     lineWrapping: true
   });
@@ -381,7 +382,21 @@ async function render() {
     setStatus(`已渲染（未命中语言：${Array.from(missingExplicitLanguages).join(", ")}）`);
     return;
   }
+  addTrafficLights(el.preview);
   setStatus("已渲染");
+}
+
+function addTrafficLights(root) {
+  root.querySelectorAll("pre").forEach((node) => {
+    const codeEl = node.querySelector("code");
+    if (codeEl && !codeEl.querySelector(".traffic-lights")) {
+      const lights = document.createElement("span");
+      lights.className = "traffic-lights";
+      lights.style.cssText = "display:block;margin-bottom:12px;line-height:1;font-size:16px;";
+      lights.innerHTML = '<span style="color:#ff5f56;display:inline-block;margin-right:8px;">●</span><span style="color:#ffbd2e;display:inline-block;margin-right:8px;">●</span><span style="color:#27c93f;display:inline-block;">●</span>';
+      codeEl.insertBefore(lights, codeEl.firstChild);
+    }
+  });
 }
 
 function applyInlineStyles(root, theme) {
@@ -411,11 +426,14 @@ function applyInlineStyles(root, theme) {
   });
 
   root.querySelectorAll("blockquote").forEach((node) => {
-    node.style.cssText = `margin:1em 0;padding:.65em .9em;border-left:4px solid ${palette.accent};background:${palette.soft};border-radius:4px;`;
+    node.style.cssText = `margin:1em 0;padding:.65em .9em;background:${palette.soft};border-radius:4px;`;
+    node.querySelectorAll("p").forEach((p) => {
+      p.style.cssText = "margin:0 !important;padding:4px 0;";
+    });
   });
 
   root.querySelectorAll("ul,ol").forEach((node) => {
-    node.style.cssText = "margin:.6em 0 1em 1.3em;padding:0;";
+    node.style.cssText = "margin:.6em 0 1em 2em;padding:0;list-style-position:outside;";
   });
 
   root.querySelectorAll("li").forEach((node) => {
@@ -423,15 +441,16 @@ function applyInlineStyles(root, theme) {
   });
 
   root.querySelectorAll("pre").forEach((node) => {
-    node.style.cssText = "margin:1em 0;padding:.75em .9em;overflow:auto;background:#f5f8ff;border:1px solid #d9e3f0;border-radius:6px;line-height:1.65;";
+    node.style.cssText = "margin:1em 0;padding:14px;overflow:auto;background:#f5f7fb;border:1px solid #d9e1ee;border-radius:8px;line-height:1.65;";
   });
+  addTrafficLights(root);
 
   root.querySelectorAll("code").forEach((node) => {
     if (node.closest("pre")) {
-      node.style.cssText = `font-family:${systemMono};font-size:14px;`;
+      node.style.cssText = `font-family:${systemMono};font-size:14px;white-space:pre;text-align:left;word-break:keep-all;overflow-wrap:normal;`;
       return;
     }
-    node.style.cssText = `font-family:${systemMono};padding:.1em .3em;border-radius:4px;background:${palette.soft};font-size:.92em;`;
+    node.style.cssText = `font-family:${systemMono};padding:.1em .3em;border-radius:4px;background:${palette.soft};font-size:.92em;display:inline;white-space:nowrap;`;
   });
 
   root.querySelectorAll("img").forEach((node) => {

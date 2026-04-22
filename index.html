@@ -13,35 +13,13 @@
   <body>
     <div class="app-shell">
       <header class="topbar">
-        <div>
+        <div class="topbar-main">
           <div class="brandline">
             <span class="brand-badge">H</span>
             <span class="brand-text">Hackdown</span>
           </div>
           <h1>Markdown → 微信公众号排版</h1>
           <p>实时预览、主题样式、复制公众号可粘贴 HTML</p>
-        </div>
-        <div class="toolbar">
-          <label class="theme-picker">
-            <span>主题</span>
-            <select id="themeSelect">
-              <option value="classic">经典灰</option>
-              <option value="ink">墨蓝</option>
-              <option value="sunset">暖橙</option>
-              <option value="forest">森绿</option>
-              <option value="plum">李紫</option>
-              <option value="ocean">海蓝</option>
-              <option value="rose">玫瑰</option>
-              <option value="amber">琥珀</option>
-              <option value="slate">板岩</option>
-              <option value="mint">薄荷</option>
-              <option value="cocoa">可可</option>
-              <option value="indigo">靛青</option>
-            </select>
-          </label>
-          <button id="copyHtmlBtn" class="btn primary">复制 HTML</button>
-          <button id="copyRichBtn" class="btn">复制富文本</button>
-          <button id="downloadBtn" class="btn">下载 HTML</button>
         </div>
       </header>
 
@@ -64,7 +42,28 @@
         <section class="panel preview-panel">
           <div class="panel-head">
             <h2>公众号预览</h2>
-            <span id="statusText" class="status">准备就绪</span>
+            <div class="panel-actions">
+              <span id="statusText" class="status">准备就绪</span>
+              <label class="theme-picker">
+                <select id="themeSelect">
+                  <option value="classic">经典灰</option>
+                  <option value="ink">墨蓝</option>
+                  <option value="sunset">暖橙</option>
+                  <option value="forest">森绿</option>
+                  <option value="plum">李紫</option>
+                  <option value="ocean">海蓝</option>
+                  <option value="rose">玫瑰</option>
+                  <option value="amber">琥珀</option>
+                  <option value="slate">板岩</option>
+                  <option value="mint">薄荷</option>
+                  <option value="cocoa">可可</option>
+                  <option value="indigo">靛青</option>
+                </select>
+              </label>
+              <button id="copyHtmlBtn" class="btn primary">复制 HTML</button>
+              <button id="copyRichBtn" class="btn">复制富文本</button>
+              <button id="downloadBtn" class="btn">下载 HTML</button>
+            </div>
           </div>
           <article id="preview" class="wechat-body theme-classic"></article>
         </section>
@@ -74,7 +73,13 @@
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/dompurify@3.2.6/dist/purify.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.18/lib/codemirror.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.18/mode/xml/xml.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.18/mode/javascript/javascript.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.18/mode/css/css.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.18/mode/htmlmixed/htmlmixed.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.18/mode/markdown/markdown.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.18/addon/mode/overlay.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/codemirror@5.65.18/mode/gfm/gfm.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/highlight.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/languages/javascript.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/languages/bash.min.js"></script>
